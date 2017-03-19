@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package be.facet.it.dojo.customershibernate.domain;
 
 /**
  *
- * Note: for these kind of persistence classes: would it be advisable to make them immutable?
+ * Note: for these kind of persistence classes: would it be advisable to make them immutable? 
+ * check here: http://vlkan.com/blog/post/2015/03/21/immutable-persistence/
  */
 public class Address {
     private long id;
