@@ -24,7 +24,10 @@ public class ProductRepository extends AbstractRepository<Product>{
     @Override
     public Product fetchById(long id) {
         Session session = this.sessionFactory.openSession();
-        return session.get(Product.class, id);
+        Product product =  session.get(Product.class, id);
+        session.close();
+        
+        return product;
     }
     
 }

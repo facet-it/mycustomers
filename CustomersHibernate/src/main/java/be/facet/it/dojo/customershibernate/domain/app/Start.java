@@ -9,6 +9,7 @@ import be.facet.it.dojo.customershibernate.domain.Customer;
 import be.facet.it.dojo.customershibernate.domain.Product;
 import be.facet.it.dojo.customershibernate.domain.Purchase;
 import be.facet.it.dojo.customershibernate.repository.CustomerRepository;
+import be.facet.it.dojo.customershibernate.repository.HibernateSession;
 import be.facet.it.dojo.customershibernate.repository.ProductRepository;
 import be.facet.it.dojo.customershibernate.repository.PurchaseRepository;
 import java.util.Date;
@@ -35,7 +36,7 @@ public class Start {
         PurchaseRepository repository = new PurchaseRepository();
         repository.save(purchase);
         
-        
+        HibernateSession.FACTORY.factory().close();
     }
     
 }

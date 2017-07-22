@@ -24,7 +24,9 @@ public class CustomerRepository extends AbstractRepository<Customer>{
     @Override
     public Customer fetchById(long id) {
         Session session = this.sessionFactory.openSession();
-        return session.get(Customer.class, id);
+        Customer customer = session.get(Customer.class, id);
+        session.close();
+        return customer;
     }
     
 }
