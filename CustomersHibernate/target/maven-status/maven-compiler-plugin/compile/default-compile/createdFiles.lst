@@ -1,8 +1,0 @@
-be\facet\it\dojo\customershibernate\domain\app\Start.class
-be\facet\it\dojo\customershibernate\domain\Product.class
-be\facet\it\dojo\customershibernate\repository\AbstractRepository.class
-be\facet\it\dojo\customershibernate\repository\AddressRepository.class
-be\facet\it\dojo\customershibernate\repository\HibernateSession.class
-be\facet\it\dojo\customershibernate\domain\Address.class
-be\facet\it\dojo\customershibernate\domain\Purchase.class
-be\facet\it\dojo\customershibernate\domain\Customer.class
