@@ -5,8 +5,13 @@
  */
 package be.facet.it.dojo.customershibernate.domain.app;
 
-import be.facet.it.dojo.customershibernate.domain.Address;
-import be.facet.it.dojo.customershibernate.repository.AddressRepository;
+import be.facet.it.dojo.customershibernate.domain.Customer;
+import be.facet.it.dojo.customershibernate.domain.Product;
+import be.facet.it.dojo.customershibernate.domain.Purchase;
+import be.facet.it.dojo.customershibernate.repository.CustomerRepository;
+import be.facet.it.dojo.customershibernate.repository.ProductRepository;
+import be.facet.it.dojo.customershibernate.repository.PurchaseRepository;
+import java.util.Date;
 
 /**
  *
@@ -15,16 +20,22 @@ import be.facet.it.dojo.customershibernate.repository.AddressRepository;
 public class Start {
     
     public static void main(String[] args) {
-        System.out.println("Starting app...");
-        Address address = new Address();
+        ProductRepository productRepo = new ProductRepository();
+        Product product = productRepo.fetchById(1L);
         
-        address.setStreet("Kerkstraat");
-        address.setNumber(45);
-        address.setCity("Bevergem");
-        address.setCustomerId(0);
+        CustomerRepository customerRepo = new CustomerRepository();
+        Customer customer = customerRepo.fetchById(6L);
         
-        AddressRepository repository = new AddressRepository();
-        repository.save(address);
+        
+        Purchase purchase = new Purchase();
+        purchase.setCustomer(customer);
+        purchase.setProduct(product);
+        purchase.setDate(new Date());
+        
+        PurchaseRepository repository = new PurchaseRepository();
+        repository.save(purchase);
+        
+        
     }
     
 }

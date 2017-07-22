@@ -12,7 +12,7 @@ import org.hibernate.SessionFactory;
  *
  * @author Beheerder
  */
-public abstract class AbstractRepository {
+public abstract class AbstractRepository<E> {
     
     protected final SessionFactory sessionFactory = HibernateSession.FACTORY.factory();
     
@@ -26,5 +26,9 @@ public abstract class AbstractRepository {
         session.getTransaction().commit();
         session.close();
     }
+    
+    public abstract void save(E entity);
+    
+    public abstract E fetchById(long id);
     
 }

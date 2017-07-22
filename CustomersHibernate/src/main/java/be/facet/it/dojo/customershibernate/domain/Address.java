@@ -11,7 +11,6 @@ public class Address {
     private String city;
     private int number;
     private String extra;
-    private long customerId;
 
     public long getId() {
         return id;
@@ -52,14 +51,4 @@ public class Address {
     public void setExtra(String extra) {
         this.extra = extra;
     }
-
-    public long getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(long customerId) {
-        this.customerId = customerId;
-    }
-    
-    
 }

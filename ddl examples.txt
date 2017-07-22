@@ -28,12 +28,20 @@ create table product(
 
 create table purchase(
 	id bigint not null auto_increment,
-	product_id bigint not null,
-	customer_id bigint not null,
+	product bigint not null,
+	customer bigint not null,
 	purchase_date datetime not null,
 	primary key(id)
 );
 
-alter table address
-add foreign key (customer_id)
+alter table customer
+add foreign key (address_id)
+references address(id);
+
+alter table purchase
+add foreign key (customer)
 references customer(id);
+
+alter table purchase
+add foreign key (product)
+references product(id);

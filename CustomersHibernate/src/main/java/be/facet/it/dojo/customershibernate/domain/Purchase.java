@@ -10,8 +10,8 @@ import java.util.Date;
  */
 public class Purchase {
     private long id;
-    private long product_id;
-    private long customer_id;
+    private Product product;
+    private Customer customer;
     private Date date;
 
     public long getId() {
@@ -22,20 +22,20 @@ public class Purchase {
         this.id = id;
     }
 
-    public long getProduct_id() {
-        return product_id;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProduct_id(long product_id) {
-        this.product_id = product_id;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
-    public long getCustomer_id() {
-        return customer_id;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomer_id(long customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Date getDate() {

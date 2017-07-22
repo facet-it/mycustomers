@@ -12,12 +12,20 @@ import org.hibernate.Session;
  *
  * @author Beheerder
  */
-public class AddressRepository extends AbstractRepository{
-    
-    public void save(Address address) {
+public class AddressRepository extends AbstractRepository<Address>{
+
+    @Override
+    public void save(Address entity) {
         Session session = this.startTransaction();
-        session.save(address);
+        session.save(entity);
         this.stopTransaction(session);
     }
+
+    @Override
+    public Address fetchById(long id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+   
     
 }

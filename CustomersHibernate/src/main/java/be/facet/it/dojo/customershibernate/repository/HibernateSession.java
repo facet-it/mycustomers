@@ -2,9 +2,10 @@
 package be.facet.it.dojo.customershibernate.repository;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
 
 /**
  *
@@ -29,16 +30,31 @@ public enum HibernateSession {
     private SessionFactory factory = null;
     
     private HibernateSession(){
+        /** this is for Hibernate version 4
+            // step 1: create a configuration and point it to the hibernate configuration file
+            Configuration configuration = new Configuration();
+            configuration.configure("hibernate.cfx.xml");
+
+            // step 2: Create a service registry
+            StandardServiceRegistry registry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+
+            //step 3: use the registry to build a sessionfactory
+            factory = configuration.buildSessionFactory(registry);
+        */
         
-        // step 1: create a configuration and point it to the hibernate configuration file
-        Configuration configuration = new Configuration();
-        configuration.configure("hibernate.cfx.xml");
-            
-        // step 2: Create a service registry
-        StandardServiceRegistry registry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-            
-        //step 3: use the registry to build a sessionfactory
-        factory = configuration.buildSessionFactory(registry);
+        //From the hibernate docs:
+        //https://docs.jboss.org/hibernate/orm/5.0/topical/html/bootstrap/NativeBootstrapping.html#_building_the_serviceregistry
+        //Step 1: create a Service registry for holding the services that Hiberate needs
+        StandardServiceRegistryBuilder registryBuilder = new StandardServiceRegistryBuilder();
+        registryBuilder.configure("hibernate.cfx.xml");
+        StandardServiceRegistry registry = registryBuilder.build();
+        
+        //Step 2: create the metadata needed for our application, such as the mappings and the domainmodel representations
+        //This deliveres metadata with default behaviour. This can be changed using the metadatasources builder
+        Metadata metaData = new MetadataSources().buildMetadata(registry);
+        
+        //Step 3: Create the SessionFactory
+        this.factory =  metaData.buildSessionFactory();
     }
     
     public SessionFactory factory(){
